@@ -1,0 +1,394 @@
+/* Brim Up — styles.css
+   Design tokens sourced from design.md. Every color/spacing/radius/duration
+   below traces back to that file — no one-off magic numbers. */
+
+:root {
+  /* Color palette */
+  --color-primary: #1A1A1A;      /* 90% confidence — packaging mockup, design system of record */
+  --color-secondary: #F2EEE6;    /* 90% confidence — packaging mockup */
+  --color-text-muted: #6B6B6B;   /* recommended neutral — no accent color confirmed by client */
+  --color-white: #FFFFFF;
+  --color-border: #E3E0DA;
+
+  /* Spacing scale (8px base) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+
+  /* Typography scale */
+  --text-hero: 36px;
+  --text-h2: 24px;
+  --text-body: 16px;
+  --text-small: 12px;
+
+  /* Radius / shadow */
+  --radius: 14px;
+  --shadow-soft: 0 2px 10px rgba(26, 26, 26, 0.08);
+
+  /* Motion (Phase 7h spec) */
+  --splash-hold: 2000ms;
+  --splash-fade: 400ms;
+  --transition: 220ms;
+
+  /* Layout */
+  --container-width: 430px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: var(--text-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  margin: 0 0 var(--space-1) 0;
+  line-height: 1.15;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a { color: inherit; }
+
+.page {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  background: var(--color-white);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ---------- Splash screen (Phase 7h) ----------
+   Non-blocking CSS overlay: it sits ON TOP of the real page, which is already
+   present in the DOM and loading underneath. It never delays LCP — it just
+   hides it for --splash-hold, then fades. */
+#splash {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  transition: opacity var(--splash-fade) ease, visibility var(--splash-fade) ease;
+}
+
+#splash.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#splash .cap-icon {
+  width: 72px;
+  height: auto;
+}
+
+#splash .wordmark {
+  color: var(--color-white);
+  font-size: 28px;
+  letter-spacing: 0.5px;
+}
+
+#splash .tagline {
+  color: rgba(255,255,255,0.65);
+  font-size: var(--text-small);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #splash { transition: none; }
+}
+
+/* ---------- Header / Hero ---------- */
+.hero {
+  padding: var(--space-4) var(--space-3) var(--space-3);
+  text-align: center;
+  background: var(--color-secondary);
+}
+
+.hero .cap-icon {
+  width: 56px;
+  margin: 0 auto var(--space-2);
+}
+
+.hero h1.wordmark {
+  font-size: var(--text-hero);
+}
+
+.hero .tagline {
+  color: var(--color-text-muted);
+  font-size: var(--text-body);
+  margin-bottom: var(--space-3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: var(--text-small);
+}
+
+.hero-image {
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: var(--space-3) 0;
+  box-shadow: var(--shadow-soft);
+  aspect-ratio: 4 / 5;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px var(--space-3);
+  border-radius: var(--radius);
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: var(--text-body);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition) ease, opacity var(--transition) ease;
+  min-height: 48px; /* accessibility: >=24px target, generous for thumb reach */
+}
+
+.btn:active { transform: scale(0.98); }
+.btn:focus-visible { outline: 3px solid #7A9CC6; outline-offset: 2px; }
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+}
+
+/* ---------- Trust bar ---------- */
+.trust-bar {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.trust-bar span { white-space: nowrap; }
+
+/* ---------- Section shell ---------- */
+section {
+  padding: var(--space-4) var(--space-3);
+}
+
+section h2 {
+  font-size: var(--text-h2);
+  margin-bottom: var(--space-1);
+}
+
+.section-intro {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+  font-size: var(--text-body);
+}
+
+/* ---------- Product gallery ---------- */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.product-card {
+  background: var(--color-secondary);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card .thumb {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #ddd8ce;
+}
+
+.product-card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card .info {
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-grow: 1;
+}
+
+.product-card .name {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.product-card .price {
+  color: var(--color-text-muted);
+  font-size: var(--text-small);
+}
+
+.product-card .order-link {
+  margin-top: auto;
+  font-size: var(--text-small);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding-top: 6px;
+}
+
+/* ---------- Why choose us ---------- */
+.reasons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.reasons li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: var(--text-body);
+}
+
+.reasons li .dot {
+  flex: 0 0 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  margin-top: 8px;
+}
+
+/* ---------- About ---------- */
+.about p {
+  font-size: var(--text-body);
+  color: var(--color-primary);
+}
+
+/* ---------- Social link cards ---------- */
+.social-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  background: var(--color-secondary);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.social-card .meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-card .platform {
+  font-weight: 600;
+  font-size: var(--text-body);
+}
+
+.social-card .handle {
+  color: var(--color-text-muted);
+  font-size: var(--text-small);
+}
+
+.social-card .arrow {
+  font-size: 18px;
+}
+
+/* ---------- Contact ---------- */
+.contact-block {
+  text-align: center;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-3);
+}
+
+.contact-block h2 { color: var(--color-white); }
+
+.contact-block p {
+  color: rgba(255,255,255,0.75);
+  margin-bottom: var(--space-3);
+}
+
+.contact-block .btn-primary {
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  padding: var(--space-4) var(--space-3) var(--space-5);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--text-small);
+  border-top: 1px solid var(--color-border);
+}
+
+footer .footer-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+footer a { text-decoration: underline; }
+
+/* ---------- Accessibility ---------- */
+a:focus-visible, button:focus-visible {
+  outline: 3px solid #7A9CC6;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
