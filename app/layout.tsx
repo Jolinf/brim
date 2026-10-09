@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: "BRIMMUP | Wear the mindset",
     description,
     type: "website",
-    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "BRIMMUP No Days Off trucker caps" }],
+    images: [{ url: siteUrl ? `${siteUrl.replace(/\/$/, "")}/images/og-image.jpg` : "/images/og-image.jpg", width: 1200, height: 630, alt: "BRIMMUP No Days Off trucker caps" }],
   },
   twitter: { card: "summary_large_image" },
 };

@@ -34,9 +34,12 @@ export interface Offering {
   image: { src: string; srcSet: string; width: number; height: number; alt: string };
 }
 
+/** Base path when served from a sub-folder, e.g. "/brim" on GitHub Pages. */
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const img = (name: string, small: number, large: number, width: number, height: number, alt: string) => ({
-  src: `/images/${name}-${large}.webp`,
-  srcSet: `/images/${name}-${small}.webp ${small}w, /images/${name}-${large}.webp ${large}w`,
+  src: `${base}/images/${name}-${large}.webp`,
+  srcSet: `${base}/images/${name}-${small}.webp ${small}w, ${base}/images/${name}-${large}.webp ${large}w`,
   width,
   height,
   alt,
@@ -48,7 +51,7 @@ export const offerings: Offering[] = [
     name: "No Days Off Trucker",
     description: "Snapback trucker with raised “No Days Off” embroidery and a breathable mesh back.",
     colours: ["Tan", "Brown", "Red", "Black", "Grey"],
-    image: { src: "/images/no-days-off-red-480.webp", srcSet: "/images/no-days-off-red-480.webp 480w", width: 480, height: 480, alt: "Red No Days Off trucker cap with white raised embroidery and a tan mesh back" },
+    image: { src: `${base}/images/no-days-off-red-480.webp`, srcSet: `${base}/images/no-days-off-red-480.webp 480w`, width: 480, height: 480, alt: "Red No Days Off trucker cap with white raised embroidery and a tan mesh back" },
   },
   {
     id: "embroidered-cross-trucker",

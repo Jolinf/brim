@@ -54,7 +54,8 @@ for (const i of imgs) {
   const src = attr(i, "src");
   check("high", `alt text on ${src}`, !!attr(i, "alt"));
   check("medium", `width/height on ${src}`, !!attr(i, "width") && !!attr(i, "height"));
-  const file = join(OUT, src || "");
+  const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const file = join(OUT, (src || "").replace(BASE, ""));
   check("critical", `image file exists: ${src}`, existsSync(file));
   if (existsSync(file) && !/loading="lazy"/.test(i)) eagerBytes += statSync(file).size;
 }
