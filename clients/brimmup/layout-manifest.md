@@ -9,7 +9,7 @@
 
 | # | Section ID | Level | Decision | Variant | Content source | Missing data | Actions |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 0 | header | page element | include | compact | wordmark (typeset) | logo file | anchors to `offerings`, `contact` |
+| 0 | header | page element | include | compact | wordmark (typeset) | logo file | anchors to `offerings`, `gallery`, `contact` |
 | 1 | hero | REQUIRED | include | image-led | name, "Wear the mindset", Lagos, lineup image | — | WhatsApp (general template), Instagram DM (secondary) |
 | 2 | offerings | REQUIRED | include | product-grid | 3 collections from brief | prices, official names | per-card WhatsApp (product template) |
 | 3 | gallery | CONDITIONAL | include | carousel | 3 client campaign posters | — | display only |

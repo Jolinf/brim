@@ -44,3 +44,10 @@ One critical check fails and two blocking client confirmations are open.
 | BR-5 | Medium | No logo file; wordmark set in Oswald, no crown | Client to supply logo |
 | BR-6 | Medium | No Days Off card image is a 379px crop (soft on high-density screens) | Replace with a clean product photo from the client |
 | BR-7 | Low | SEETHE WORLD caps excluded pending confirmation | Add as a fourth collection if confirmed |
+
+## Update 9 Oct 2026, 13:00
+
+- Gallery rebuilt as one row per cap with every photographed colour (10 images, captioned). Price label changed to "DM for price" at Joshua's request.
+- Build with `NEXT_PUBLIC_BASE_PATH=/brim` and `SITE_URL=https://jolinf.github.io/brim`: 78/78 automated checks pass, including og:image (BR-1 closed for the GitHub Pages URL).
+- No horizontal page overflow at 320, 390, 1280px; gallery images capped at 85% of screen width.
+

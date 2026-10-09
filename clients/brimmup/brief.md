@@ -1,4 +1,4 @@
-# Brief: BRIMMUP
+﻿# Brief: BRIMMUP
 
 Status: provisional, pending client confirmation of the open items below.
 Sources: client-supplied photos and posters in `assets/products/` (received 8 Oct 2026); previous site (`_legacy/`).
@@ -31,18 +31,19 @@ Sources: client-supplied photos and posters in `assets/products/` (received 8 Oc
 | No Days Off trucker | tan, brown, red, black, grey with black mesh | breathable mesh, adjustable snapback (poster 12.24.56) | 12.24.56, 12.21.11 |
 | Embroidered cross trucker | grey, brown, cream with black mesh, olive, mustard, rust, slate | leather look, embroidery, mesh back (posters) | 12.20.03, 12.24.56 (1)-(3), 12.24.57, (1), (3) |
 | Prower bear dad cap | brown, burgundy | none stated | 12.20.04 |
+| Seethe World dad cap | navy with pink embroidery, black with white embroidery | "couple caps" (posters) | 12.24.58 (1)-(3); confirmed Brimmup stock by Joshua, 9 Oct 2026 |
 
 ## Excluded material
 
 - **12.24.57 (2):** wrong phone number (0705 123 4567) and a typo ("DEFFRENT"). Not used.
-- **12.24.57 (4), (5), 12.24.58, (1)-(3):** SEETHE WORLD caps and a SEETHE WORLD-branded collage. Excluded until the client confirms Brimmup sells them.
+- **12.24.57 (4), (5), 12.24.58:** SEETHE WORLD collage and two posters not used (collage is text-heavy; 12.24.58 features a third-party perfume brand). The caps themselves are listed.
 - **Previous site claims with no source:** price range ₦6,000–7,000, "Instant pickup available", the About paragraph, "Why choose us". Removed.
 - **Third-party marks:** New Era 9FIFTY stickers are visible on the No Days Off caps. Not named anywhere in copy.
 
 ## Missing information (asked 9 Oct 2026)
 
 1. Prices (cards show "Ask for price" until supplied).
-2. Whether SEETHE WORLD caps are Brimmup stock.
+2. ~~Whether SEETHE WORLD caps are Brimmup stock~~ (confirmed 9 Oct 2026).
 3. Official product names.
 4. Logo file (wordmark set in type until supplied).
 5. Whether the product images show the actual stock (several look like rendered mockups).

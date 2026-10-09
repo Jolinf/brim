@@ -32,7 +32,7 @@ Red is not a brand colour; it appears only in product photos.
 
 ## Imagery
 
-- Approved for use (client-supplied): clean shots 12.20.03, 12.20.04; lineup crop of 12.24.56; posters 12.21.11, 12.24.56 (1), 12.24.56 (2) whole.
+- Approved for use (client-supplied): clean shots 12.20.03, 12.20.04; lineup crop of 12.24.56; posters 12.21.11, 12.24.56 (1)-(3), 12.24.57, 12.24.57 (1), 12.24.57 (3) whole (gallery, one per colour).
 - Treatment: no frames, no shadows, `radius-md` corners; products sit directly on the dark ground.
 - Aspect ratios: hero 16:9-ish crop; product cards 1:1 or native crop with fixed `aspect-ratio`.
 - Not to be used: 12.24.57 (2) (wrong number), SEETHE WORLD images (pending).

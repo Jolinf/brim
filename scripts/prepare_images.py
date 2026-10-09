@@ -29,6 +29,16 @@ JOBS = {
     "poster-no-days-off": (P + "12.21.11.jpeg", None, [480, 800]),
     "poster-worn-your-way-brown": (P + "12.24.56 (1).jpeg", None, [480, 800]),
     "poster-worn-your-way-cream": (P + "12.24.56 (2).jpeg", None, [480, 800]),
+    # More embroidered cross trucker colours for the gallery (whole posters)
+    "poster-cross-olive": (P + "12.24.56 (3).jpeg", None, [480, 800]),
+    "poster-cross-mustard": (P + "12.24.57.jpeg", None, [480, 800]),
+    "poster-cross-rust": (P + "12.24.57 (1).jpeg", None, [480, 800]),
+    "poster-cross-slate": (P + "12.24.57 (3).jpeg", None, [480, 800]),
+    # SEETHE WORLD dad caps (confirmed Brimmup stock, 9 Oct 2026)
+    "seethe-couple": (P + "12.24.58 (3).jpeg", (0, 425, 1024, 1060), [640, 1024]),
+    "poster-seethe-couple": (P + "12.24.58 (3).jpeg", None, [480, 800]),
+    "poster-seethe-two-caps": (P + "12.24.58 (1).jpeg", None, [480, 800]),
+    "poster-seethe-navy": (P + "12.24.58 (2).jpeg", None, [480, 800]),
 }
 
 for name, (src, box, widths) in JOBS.items():

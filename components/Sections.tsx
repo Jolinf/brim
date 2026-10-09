@@ -12,6 +12,7 @@ export function Header() {
       <nav aria-label="Page sections">
         <ul className="flex gap-5 text-[14px] leading-5 text-ink-muted">
           <li><a className="inline-block py-3 hover:text-ink" href="#offerings">Caps</a></li>
+          <li><a className="inline-block py-3 hover:text-ink" href="#gallery">Gallery</a></li>
           <li><a className="inline-block py-3 hover:text-ink" href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -60,19 +61,19 @@ export function Offerings() {
   return (
     <section id="offerings" aria-labelledby="offerings-title" className={`${wrap} py-10`}>
       <SectionTitle id="offerings-title">The caps</SectionTitle>
-      <p className="mt-2 text-[14px] leading-5 text-ink-muted">Prices on request. Tap a cap to ask about colours and availability.</p>
-      <ul className="mt-6 grid gap-4 tablet:grid-cols-2 desktop:grid-cols-3">
+      <p className="mt-2 text-[14px] leading-5 text-ink-muted">DM for price. Tap a cap to ask about colours and availability, or see every colour in the gallery.</p>
+      <ul className="mt-6 grid gap-4 tablet:grid-cols-2 desktop:grid-cols-4">
         {offerings.map((o) => (
           <li key={o.id} className="flex flex-col overflow-hidden rounded-md border border-dashed border-line bg-surface-raised">
             <img
               src={o.image.src}
               srcSet={o.image.srcSet}
-              sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+              sizes="(min-width: 1024px) 270px, (min-width: 640px) 50vw, 100vw"
               width={o.image.width}
               height={o.image.height}
               alt={o.image.alt}
               loading="lazy"
-              className="aspect-square h-auto w-full object-cover"
+              className={`aspect-square h-auto w-full ${o.fit === "contain" ? "bg-surface-sunken object-contain" : "object-cover"}`}
             />
             <div className="flex flex-1 flex-col gap-3 p-4">
               <h3 className="display text-lg font-medium leading-6">{o.name}</h3>
@@ -81,7 +82,7 @@ export function Offerings() {
                 <span className="text-ink-muted">Colours shown: </span>
                 {o.colours.join(", ")}
               </p>
-              <p className="display text-lg font-semibold leading-6">{o.price ?? "Ask for price"}</p>
+              <p className="display text-lg font-semibold leading-6">{o.price ?? "DM for price"}</p>
               <CtaButton ctx={{ kind: "product", name: o.name, price: o.price }} variant="secondary" className="mt-auto w-full" />
             </div>
           </li>
@@ -93,30 +94,41 @@ export function Offerings() {
 
 export function Gallery() {
   return (
-    <section aria-labelledby="gallery-title" className="py-10">
+    <section id="gallery" aria-labelledby="gallery-title" className="py-10">
       <div className={wrap}>
-        <SectionTitle id="gallery-title">Campaigns</SectionTitle>
+        <SectionTitle id="gallery-title">Gallery</SectionTitle>
+        <p className="mt-2 text-[14px] leading-5 text-ink-muted">Every colour we&apos;ve shot so far. Scroll sideways to see them all.</p>
       </div>
-      <ul
-        tabIndex={0}
-        aria-label="Campaign posters, scroll sideways"
-        className={`${wrap} mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-color:var(--color-line)_transparent]`}
-      >
-        {gallery.map((g) => (
-          <li key={g.src} className="w-[72%] shrink-0 snap-start tablet:w-[40%] desktop:w-[30%]">
-            <img
-              src={g.src}
-              srcSet={g.srcSet}
-              sizes="(min-width: 1024px) 336px, (min-width: 640px) 40vw, 72vw"
-              width={g.width}
-              height={g.height}
-              alt={g.alt}
-              loading="lazy"
-              className="h-auto w-full rounded-md"
-            />
-          </li>
-        ))}
-      </ul>
+      {gallery.map((group) => (
+        <div key={group.offeringId} className="mt-8">
+          <h3 className={`${wrap} display text-lg font-medium leading-6`}>
+            {group.title} <span className="font-body text-[14px] normal-case tracking-normal text-ink-muted">· {group.items.length} {group.items.length === 1 ? "photo" : "photos"}</span>
+          </h3>
+          <ul
+            tabIndex={0}
+            aria-label={`${group.title} colours, scroll sideways`}
+            className={`${wrap} mt-3 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 [scrollbar-color:var(--color-line)_transparent]`}
+          >
+            {group.items.map((item) => (
+              <li key={item.image.src} className="shrink-0 snap-start">
+                <figure>
+                  <img
+                    src={item.image.src}
+                    srcSet={item.image.srcSet}
+                    sizes="(min-width: 1024px) 560px, 80vw"
+                    width={item.image.width}
+                    height={item.image.height}
+                    alt={item.image.alt}
+                    loading="lazy"
+                    className="h-auto max-h-72 w-auto max-w-[85vw] rounded-md desktop:max-h-80 desktop:max-w-[560px]"
+                  />
+                  <figcaption className="mt-2 text-[14px] leading-5">{item.caption}</figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </section>
   );
 }
