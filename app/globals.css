@@ -15,8 +15,8 @@
   --color-brand-tint: #382416;
   --color-danger: #ff8a6b;
 
-  --font-display: var(--font-oswald), "Arial Narrow", system-ui, sans-serif;
-  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+  --font-display: "Oswald", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
 
   --radius-sm: 4px;
   --radius-md: 12px;

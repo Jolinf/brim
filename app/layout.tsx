@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Oswald } from "next/font/google";
+// Fonts ship with the site (no build-time download from Google, which made CI builds fail at random).
+import "@fontsource/oswald/latin-500.css";
+import "@fontsource/oswald/latin-600.css";
+import "@fontsource/dm-sans/latin-400.css";
+import "@fontsource/dm-sans/latin-600.css";
 import "./globals.css";
-
-const oswald = Oswald({ subsets: ["latin"], weight: ["500", "600"], variable: "--font-oswald", display: "swap" });
-const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "600"], variable: "--font-dm-sans", display: "swap" });
 
 const description = "Caps from Lagos. Browse the BRIMMUP collection and order on WhatsApp.";
 
@@ -35,7 +36,7 @@ export const viewport: Viewport = { themeColor: "#100904", width: "device-width"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${oswald.variable} ${dmSans.variable}`}>
+    <html lang="en">
       <body>{children}</body>
     </html>
   );
