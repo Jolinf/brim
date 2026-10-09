@@ -45,6 +45,6 @@ Sources: client-supplied photos and posters in `assets/products/` (received 8 Oc
 1. Prices (cards show "Ask for price" until supplied).
 2. ~~Whether SEETHE WORLD caps are Brimmup stock~~ (confirmed 9 Oct 2026).
 3. Official product names.
-4. Logo file (wordmark set in type until supplied).
+4. Original logo file. Interim: brush logo (crown + BRIMMUP + TM) extracted from poster 12.21.11 at 301x116px (`scripts/prepare_logo.py`); soft on high-density screens. Three logo variants appear across posts (brush, serif, script); brush chosen as the only one carrying TM. Confirm with client.
 5. Whether the product images show the actual stock (several look like rendered mockups).
 6. Pickup or delivery terms.

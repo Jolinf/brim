@@ -9,6 +9,7 @@ const description = "Caps from Lagos. Browse the BRIMMUP collection and order on
 
 // Set SITE_URL (e.g. https://brimmup.com) at build time so share previews get absolute URLs.
 const siteUrl = process.env.SITE_URL;
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
@@ -21,6 +22,13 @@ export const metadata: Metadata = {
     images: [{ url: siteUrl ? `${siteUrl.replace(/\/$/, "")}/images/og-image.jpg` : "/images/og-image.jpg", width: 1200, height: 630, alt: "BRIMMUP No Days Off trucker caps" }],
   },
   twitter: { card: "summary_large_image" },
+  icons: {
+    icon: [
+      { url: `${basePath}/favicon.ico`, sizes: "48x48" },
+      { url: `${basePath}/brand/icon-192.png`, type: "image/png", sizes: "192x192" },
+    ],
+    apple: [{ url: `${basePath}/brand/apple-touch-icon.png`, sizes: "180x180" }],
+  },
 };
 
 export const viewport: Viewport = { themeColor: "#100904", width: "device-width", initialScale: 1 };

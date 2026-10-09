@@ -5,3 +5,4 @@ next-env.d.ts
 *.tsbuildinfo
 build.log
 qa.log
+scripts/_logo_scratch/

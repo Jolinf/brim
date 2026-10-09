@@ -1,4 +1,4 @@
-import { business, gallery, heroImage, offerings } from "@/lib/storefront";
+import { business, gallery, heroImage, logo, offerings } from "@/lib/storefront";
 import { CtaButton } from "./CtaButton";
 
 const wrap = "mx-auto w-full max-w-layout px-4";
@@ -6,8 +6,8 @@ const wrap = "mx-auto w-full max-w-layout px-4";
 export function Header() {
   return (
     <header className={`${wrap} flex min-h-tap items-center justify-between py-3`}>
-      <a href="#hero" className="display inline-block py-2.5 text-xl font-semibold tracking-[0.08em]">
-        {business.name}
+      <a href="#hero" className="inline-flex min-h-tap items-center">
+        <img src={logo.src} width={logo.width} height={logo.height} alt={`${logo.alt}, back to top`} className="h-9 w-auto" />
       </a>
       <nav aria-label="Page sections">
         <ul className="flex gap-5 text-[14px] leading-5 text-ink-muted">
@@ -25,8 +25,8 @@ export function Hero() {
   return (
     <section id="hero" aria-labelledby="hero-title" className={`${wrap} grid gap-6 pb-10 pt-4 desktop:grid-cols-[5fr_7fr] desktop:items-center desktop:gap-10 desktop:pt-10`}>
       <div className="max-w-content">
-        <h1 id="hero-title" className="display text-[56px] font-semibold leading-[0.95] tablet:text-[80px]">
-          {business.name}
+        <h1 id="hero-title">
+          <img src={logo.src} width={logo.width} height={logo.height} alt={logo.alt} fetchPriority="high" className="h-auto w-[220px] tablet:w-[280px]" />
         </h1>
         <p className="display mt-3 text-2xl leading-[30px] text-brand">{business.tagline}</p>
         <p className="mt-4 text-ink-muted">{business.intro}</p>
@@ -93,6 +93,7 @@ export function Offerings() {
 }
 
 export function Gallery() {
+  const instagram = business.socials.find((s) => s.label === "Instagram")!;
   return (
     <section id="gallery" aria-labelledby="gallery-title" className="py-10">
       <div className={wrap}>
@@ -129,6 +130,23 @@ export function Gallery() {
           </ul>
         </div>
       ))}
+      <div className={`${wrap} mt-10`}>
+        <div className="flex flex-col gap-4 rounded-md border border-dashed border-line bg-surface-raised p-6 tablet:flex-row tablet:items-center tablet:justify-between">
+          <div>
+            <p className="display text-xl font-medium leading-7">View our entire collection on Instagram</p>
+            <p className="mt-1 text-[14px] leading-5 text-ink-muted">{instagram.handle} on Instagram</p>
+          </div>
+          <a
+            href={instagram.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View the full collection on Instagram, ${instagram.handle} (opens Instagram)`}
+            className="inline-flex min-h-tap shrink-0 items-center justify-center rounded-button border border-line-strong px-6 font-display text-[15px] font-medium leading-5 text-ink transition-colors hover:border-ink"
+          >
+            Open Instagram
+          </a>
+        </div>
+      </div>
     </section>
   );
 }
@@ -154,7 +172,7 @@ export function Footer() {
   return (
     <footer className={`${wrap} flex flex-col gap-4 py-8 text-[14px] leading-5 text-ink-muted tablet:flex-row tablet:items-center tablet:justify-between`}>
       <div>
-        <p className="display text-base font-semibold tracking-[0.08em] text-ink">{business.name}</p>
+        <img src={logo.src} width={logo.width} height={logo.height} alt={logo.alt} loading="lazy" className="mb-2 h-8 w-auto" />
         <p>{business.city} · WhatsApp {business.whatsappDisplay}</p>
       </div>
       <ul className="flex gap-5" aria-label="Social profiles">

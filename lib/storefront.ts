@@ -132,5 +132,8 @@ export const gallery: GalleryGroup[] = [
 ];
 
 
+/** Brush logo extracted from the client's poster (scripts/prepare_logo.py). White on transparent; 301x116 source. */
+export const logo = { src: `${base}/brand/logo-white.png`, width: 301, height: 116, alt: "BRIMMUP" };
+
 export const heroImage = img("no-days-off-lineup", 640, 1200, 1200, 664, "Five No Days Off trucker caps in tan, brown, red, black and grey on a wooden table");
 
